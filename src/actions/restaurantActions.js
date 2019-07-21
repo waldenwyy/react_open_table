@@ -4,7 +4,7 @@ export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
 export const REFINE_DATA = 'REFINE_DATA';
 
 export const fetchData = (city) => {
-    const fetchUrl = `http://opentable.herokuapp.com/api/restaurants?city=${city}&per_page=100`;
+    const fetchUrl = `://opentable.herokuapp.com/api/restaurants?city=${city}&per_page=100`;
     
     return (dispatch) => {
         dispatch(fetchDataBegin());
