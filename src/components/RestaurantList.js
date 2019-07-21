@@ -7,13 +7,13 @@ const RestaurantList = props => {
     <div>
       <Container>
         <Row>
-        { props.restaurants.map(restaurant => {
+        { props.restaurants && props.restaurants.length > 0 ? props.restaurants.map(restaurant => {
           return (
             <Col sm="6" md="4" className="mb-5"  key={restaurant.id}>
               <RestaurantCard restaurant={restaurant} />
             </Col>
           )
-        })}
+        }) : null }
         </Row>
       </Container>
     </div>

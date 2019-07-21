@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { fetchData } from '../actions/restaurantActions';
+import { fetchData, refineData } from '../actions/restaurantActions';
 import { connect } from 'react-redux';
 
 class Search extends Component {
@@ -9,29 +9,40 @@ class Search extends Component {
         
         this.state = {
             city: '',
+            refine: '',
             error: ''
         }
     }
 
-    onChange = event => {
+    onChangeCity = event => {
         this.setState({
             city: event.target.value
         })
+    };
 
+    onChangeRefine = event => {
+        this.setState({
+            refine: event.target.value
+        })
     };
 
     onFormSubmit = event => {
         event.preventDefault();
-
+        // console.log(this.props.refine);
         if (!this.state.city) {
             this.setState({
                 error: 'Please enter a city name'
             })
-        } else {
+        }else if(this.state.city !== this.props.city) {
             this.setState({
                 error: ''
             })
+
             this.props.fetchData(this.state.city);
+        }
+
+        if (this.state.refine !== this.props.refine) {
+            this.props.refineData(this.state.refine);
         }
     };
 
@@ -47,9 +58,8 @@ class Search extends Component {
                                 name="cityName"
                                 className="mb-2 mr-md-2 w-100"
                                 placeholder="City"
-                                onChange={this.onChange}
+                                onChange={this.onChangeCity}
                                 value={this.state.city}
-                                
                             />
                         </FormGroup>
 
@@ -60,6 +70,8 @@ class Search extends Component {
                                 name="refine"
                                 className="mb-2 mr-md-2 w-100"
                                 placeholder="Address, Name or Area"
+                                onChange={this.onChangeRefine}
+                                value={this.state.refine}
                             />
                         </FormGroup>
 
@@ -86,8 +98,9 @@ class Search extends Component {
 const mapStatetoProps = (state) => {
     return {
       city: state.restaurantReducer.city,
+      refine: state.restaurantReducer.refine
     } 
 }
   
 
-export default connect(mapStatetoProps, { fetchData })(Search);
+export default connect(mapStatetoProps, { fetchData, refineData })(Search);

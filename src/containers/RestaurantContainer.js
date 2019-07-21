@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
 import RestaurantList from '../components/RestaurantList';
 import { connect } from 'react-redux';
+import { getVisibleRestaurants } from '../selectors/restaurantSelector'
 
 class RestaurantContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      filter: {
-        city: 'Toronto',
-        name: '',
-        address: '',
-        area: ''
-      }
-    }
-  }
   
   render() {
-    if (this.state.error) {
-      return <div>Error! {this.error.message}</div>;
+    if (this.props.error) {
+      return <div>Error! {this.props.error.message}</div>;
     }
 
     return (
       <div>
         { this.props.loading ? <p>Loading</p> : null }
-        <p>Total items: {this.props.total}</p>
+        <p>
+          Total items: {this.props.refine ? this.props.restaurants.length : this.props.total}
+        </p>
         <RestaurantList restaurants={this.props.restaurants} />
       </div>
     );
@@ -33,10 +24,11 @@ class RestaurantContainer extends Component {
 
 const mapStatetoProps = (state) => {
   return {
-    restaurants: state.restaurantReducer.restaurants,
+    restaurants: getVisibleRestaurants(state),
     total: state.restaurantReducer.total_items,
     error: state.restaurantReducer.error,
-    loading: state.restaurantReducer.loading
+    loading: state.restaurantReducer.loading,
+    refine: state.restaurantReducer.refine
   } 
 }
 

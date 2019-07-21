@@ -34,6 +34,7 @@
     ]
   },
   "devDependencies": {
-    "react-devtools": "^3.6.2"
+    "react-devtools": "^3.6.2",
+    "reselect": "^4.0.0"
   }
 }
