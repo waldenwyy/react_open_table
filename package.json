@@ -10,7 +10,8 @@
     "react-scripts": "3.0.1",
     "reactstrap": "^8.0.1",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,7 +35,6 @@
     ]
   },
   "devDependencies": {
-    "react-devtools": "^3.6.2",
-    "reselect": "^4.0.0"
+    "react-devtools": "^3.6.2"
   }
 }
