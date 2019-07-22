@@ -28,7 +28,6 @@ class Search extends Component {
 
     onFormSubmit = event => {
         event.preventDefault();
-        // console.log(this.props.refine);
         if (!this.state.city) {
             this.setState({
                 error: 'Please enter a city name'
@@ -88,13 +87,6 @@ class Search extends Component {
     }
 };
 
-// const mapDispatchProps = (dispatch) => {
-//     return {
-//       onFetchData: (filter) => {
-//         dispatch(fetchData(filter));
-//       }
-//     }
-//   }
 const mapStatetoProps = (state) => {
     return {
       city: state.restaurantReducer.city,
