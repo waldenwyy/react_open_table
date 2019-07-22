@@ -16,7 +16,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -35,6 +36,10 @@
     ]
   },
   "devDependencies": {
-    "react-devtools": "^3.6.2"
+    "babel-jest": "^24.8.0",
+    "fetch-mock": "^7.3.9",
+    "jest": "^24.8.0",
+    "react-devtools": "^3.6.2",
+    "redux-mock-store": "^1.5.3"
   }
 }

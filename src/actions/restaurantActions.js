@@ -7,7 +7,7 @@ export const fetchData = (city) => {
     const fetchUrl = `https://opentable.herokuapp.com/api/restaurants?city=${city}&per_page=100`;
     
     return (dispatch) => {
-        dispatch(fetchDataBegin());
+       dispatch(fetchDataBegin());
 
         return fetch(fetchUrl)
             .then(response => {
