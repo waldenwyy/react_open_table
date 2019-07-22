@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { REFINE_DATA, refineData, fetchData, FETCH_DATA_BEGIN, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from '../actions/restaurantActions';
+import { refineData, fetchData, REFINE_DATA, FETCH_DATA_BEGIN, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from '../actions/restaurantActions';
 import fetchMock from 'fetch-mock'
 import expect from 'expect'
 
@@ -40,6 +40,17 @@ describe('async actions', () => {
         })
     });
 
-    
-    
+    it('dispatch FETCH_DATA_BEGIN and FETCH_DATA_FAILURE when error', () => {
+      fetchMock.getOnce('https://opentable.herokuapp.com/api/restaurants?city=Error&per_page=100', 400)
+        .catch(err => err);
+      
+        const expectedActions = [FETCH_DATA_BEGIN, FETCH_DATA_FAILURE];
+        const store = mockStore({});
+
+        return store.dispatch(fetchData('Error')).then(() => {
+          const actualActions = store.getActions().map(action => action.type);
+          expect(actualActions).toEqual(expectedActions);
+        })
+
+    })
 })
