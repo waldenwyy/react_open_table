@@ -19,7 +19,7 @@ export const fetchData = (city) => {
             })
             .then(result => {
                 dispatch({
-                    type: 'FETCH_DATA_SUCCESS',
+                    type: FETCH_DATA_SUCCESS,
                     payload: {
                         result,
                         city
@@ -27,7 +27,7 @@ export const fetchData = (city) => {
                 })
             })
             .catch(err => dispatch({
-                type: 'FETCH_DATA_FAILURE',
+                type: FETCH_DATA_FAILURE,
                 error: err
             }))
     }
