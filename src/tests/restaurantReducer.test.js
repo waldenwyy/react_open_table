@@ -1,5 +1,5 @@
 import restaurantReducer from '../reducers/restaurantReducer';
-import { fetchData, FETCH_DATA_BEGIN } from '../actions/restaurantActions';
+import { FETCH_DATA_BEGIN } from '../actions/restaurantActions';
 import expect from 'expect';
 
 describe('post reducer', () => {
