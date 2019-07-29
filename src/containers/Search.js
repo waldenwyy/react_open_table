@@ -54,6 +54,7 @@ class Search extends Component {
                             <Label className="sr-only" for="cityName">City</Label>
                             <Input
                                 type="text"
+                                id="cityName"
                                 name="cityName"
                                 className="mb-2 mr-md-2 w-100"
                                 placeholder="City"
@@ -66,6 +67,7 @@ class Search extends Component {
                             <Label className="sr-only" for="refine">Address, Name or Area</Label>
                             <Input
                                 type="text"
+                                id="refine"
                                 name="refine"
                                 className="mb-2 mr-md-2 w-100"
                                 placeholder="Address, Name or Area"
